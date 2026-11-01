@@ -1,0 +1,100 @@
+﻿@model IEnumerable<OrderManagement.Models.Customer>
+
+@{
+    ViewData["Title"] = "Customer List";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+<style>
+    body {
+        background: linear-gradient(135deg, #f0f4f8, #d9e2ef);
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .glass-card {
+        background: rgba(255,255,255,0.65);
+        backdrop-filter: blur(12px);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        padding: 20px;
+        margin-top: 30px;
+    }
+
+    .table thead {
+        background: #0d6efd;
+        color: #fff;
+    }
+
+    .table tbody tr:hover {
+        background: #e8f0fe;
+        transition: 0.3s;
+    }
+
+    .btn-soft {
+        border-radius: 50px;
+        padding: 6px 14px;
+        transition: 0.3s;
+    }
+
+        .btn-soft:hover {
+            transform: scale(1.05);
+        }
+
+    .section-title {
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #0d6efd;
+    }
+
+    .action-btn i {
+        margin-right: 4px;
+    }
+
+</style>
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mt-4">
+        <h2 class="section-title">📋 Customer List</h2>
+        <a asp-action="Create" class="btn btn-primary btn-soft">
+            <i class="bi bi-plus-circle"></i> Add Customer
+        </a>
+    </div>
+
+    <div class="glass-card mt-3">
+
+        <div class="table-responsive">
+            <table class="table table-hover align-middle text-center">
+                <thead>
+                    <tr>
+                        <th style="width: 10%">ID</th>
+                        <th style="width: 50%">Name</th>
+                        <th style="width: 40%">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td class="text-start">@item.Name</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-soft action-btn btn-sm">
+                                    <i class="bi bi-pencil-square"></i> Edit
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-soft action-btn btn-sm">
+                                    <i class="bi bi-trash"></i> Delete
+                                </a>
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-soft action-btn btn-sm">
+                                    <i class="bi bi-eye"></i> Details
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

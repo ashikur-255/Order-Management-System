@@ -1,0 +1,80 @@
+﻿@model OrderManagement.ViewModels.OrderStatsVM
+
+<style>
+    .stat-card {
+        padding: 20px;
+        border-radius: 18px;
+        color: white;
+        transition: 0.3s;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+        .stat-card:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+    .stat1 {
+        background: linear-gradient(135deg, #4facfe, #00f2fe);
+    }
+
+    .stat2 {
+        background: linear-gradient(135deg, #43e97b, #38f9d7);
+    }
+
+    .stat3 {
+        background: linear-gradient(135deg, #fa709a, #fee140);
+    }
+
+    .stat-icon {
+        font-size: 30px;
+        opacity: 0.8;
+    }
+
+    .stat-number {
+        font-size: 32px;
+        font-weight: bold;
+    }
+</style>
+
+<div class="row mb-4 text-center">
+
+    <!-- TOTAL -->
+    <div class="col-md-4">
+        <div class="stat-card stat1">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h6>Total Orders</h6>
+                    <div class="stat-number">@Model.TotalOrders</div>
+                </div>
+                <i class="bi bi-cart-fill stat-icon"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAID -->
+    <div class="col-md-4">
+        <div class="stat-card stat2">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h6>Paid Orders</h6>
+                    <div class="stat-number">@Model.PaidOrders</div>
+                </div>
+                <i class="bi bi-check-circle-fill stat-icon"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- PENDING -->
+    <div class="col-md-4">
+        <div class="stat-card stat3">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h6>Pending Orders</h6>
+                    <div class="stat-number">@Model.PendingOrders</div>
+                </div>
+                <i class="bi bi-clock-fill stat-icon"></i>
+            </div>
+        </div>
+    </div>
+
+</div>
